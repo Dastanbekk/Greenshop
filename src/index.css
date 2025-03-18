@@ -1,0 +1,25 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap");
+@import "tailwindcss";
+@import "swiper/css";
+@import "swiper/css/pagination";
+
+body {
+  font-family: "Inter", sans-serif;
+}
+
+.containerr {
+  max-width: 1440px;
+  width: 95%;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+.swiper-pagination-bullet {
+  background-color: gray !important; /* Default rang */
+  opacity: 0.5;
+}
+
+.swiper-pagination-bullet-active {
+  background-color: #46a358 !important; /* Yashil rang */
+  opacity: 1;
+}

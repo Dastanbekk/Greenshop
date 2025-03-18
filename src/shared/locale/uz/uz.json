@@ -1,0 +1,107 @@
+{
+  "register": "Ro‘yxatdan o‘tish",
+  "login": "Kirish",
+  "sections": "Bo'limlar",
+  "subscribe": "Hozir obuna bo‘ling",
+  "today": "Dushanba, 1-yanvar, 2018",
+  "boston": "Boston va Nyu-York asosiy zarbani qabul qildi",
+  "navbar": [
+    "Yangiliklar",
+    "Fikr-mulohaza",
+    "Fan",
+    "Hayot",
+    "Sayohat",
+    "Moliya",
+    "San’at va dizayn",
+    "Sport",
+    "Odamlar",
+    "Salomatlik",
+    "Ta’lim"
+  ],
+  "showcaseCards": [
+    "25 ta qo‘shiq bizga musiqaning qayerga ketayotganini aytadi",
+    "Bu qadimiy qotillar o‘zlarini yeyishadi",
+    "Qanday qilib odamlarni murakkab musiqani sevishga o‘rgatish mumkin?",
+    "Xalqaro futbolning sirli odami"
+  ],
+  "recommended": [
+    {
+      "category": "OVQAT",
+      "title": "Tovuq qovurilgan steyk uchun haddan tashqari ko‘p — bu aynan yetarli"
+    },
+    {
+      "category": "MASHINALAR",
+      "title": "Bo‘ron avtosalonlarni tezkor biznes qilishga majbur qildi"
+    },
+    {
+      "category": "FILMLAR",
+      "title": "Urush do‘zaxmi? Yangi harbiy dramalarda hammasi bir tomonlama"
+    },
+    {
+      "category": "NFL",
+      "title": "Faol NFL o‘yinchilari uchun 11 ta hayratlanarli statistik reyting"
+    },
+    {
+      "category": "TEXNO SHARHLAR",
+      "title": "Onlayn sotib olib, o‘zingiz yig‘ishingiz mumkin bo‘lgan kitob javonlari"
+    }
+  ],
+  "destinations": "Yo‘nalishlar",
+  "fish": "Janubi-sharqiy Angliyada, Oq qoyalar va baliq",
+  "showCaseBtn": "Batafsil o‘qish",
+  "showCaseHead": "Bichi-Xedning bo'r qoyasi",
+  "replace": [
+    { "category": "Avtomobillar" },
+    {
+      "title": "Nusxalash zavqi: 5 million dollarlik avtomobil atigi 50 000 dollarga"
+    },
+    {
+      "description": "31 yoshli o‘z-o‘zini o‘rgangan muhandis va sobiq havaskor poygachi kunlarini mashhur sport avtomobillarining san’at darajasidagi nusxalarini yaratish bilan o‘tkazadi."
+    },
+    { "author": "Jessika Miller" },
+    {
+      "comments": 342
+    }
+  ],
+  "popular": "Ommabop",
+  "popular_desc": "Ko‘rinmas siyoh: tatuirovkani olib tashlashning g‘alati dunyosi – rasmlarda",
+  "cat_desc": "200+ ta halokatga uchragan mushuklar eutanasiyadan saqlandi",
+  "card_1": [
+    { "title": "Qahva suyaklar uchun zararlimi?" },
+    {
+      "description": "Qahva ichuvchilar ko'proq kaltsiy ajratishi mumkin, lekin bu suyaklarni zaiflashtirmaydi."
+    },
+    { "date": "15-oktyabr" }
+  ],
+
+  "__Flower": "Flower_Texts",
+  "flower_title": "Uluğ gullash yoki «Gullaydigan o‘simliklar dunyoni qanday o‘zgartirdi»",
+
+  "flower_cards": [
+    { "category": "Parvozlar" },
+    {
+      "title": "Yo'lovchilar Yevropa aviakompaniyalariga bosim o'tkazayotgan qattiq raqobatdan aziyat chekmoqda"
+    },
+    {
+      "description": "Zaifroq aviakompaniyalar qattiq raqobat tufayli chetga chiqib qoldi, boshqalari esa omadsizlikka uchradi. Natija: minglab bekor qilingan reyslar."
+    }
+  ],
+
+  "__Footer": "Footer_Texts",
+
+  "footer_title": "Hoziroq obuna bo'ling va 20% chegirma oling",
+  "news_categories": [
+    "Yangiliklar",
+    "Millat",
+    "Dunyo",
+    "Siyosat",
+    "Quyosh tutilishi"
+  ],
+  "contact": [
+    "Biz bilan bog‘laning",
+    "Biz bilan ishlang",
+    "Reklama",
+    "Sizning reklama tanlovingiz"
+  ],
+  "footer_desc": "Universal'ning biznes kontseptsiyasi – modani va sifatni eng yaxshi narxda barqaror tarzda taklif qilishdir. 2015-yilda asos solinganidan beri Universal dunyoning yetakchi moda kompaniyalaridan biriga aylandi."
+}

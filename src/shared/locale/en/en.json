@@ -1,0 +1,103 @@
+{
+  "___Navbar": "Navbar Start",
+  "register": "Register",
+  "login": "Login",
+  "sections": "Sections",
+  "subscribe": "Subscribe Now",
+  "today": "Monday, January 1, 2018",
+  "boston": "Boston and New York Bear Brunt",
+  "navbar": [
+    "News",
+    "Opinion",
+    "Science",
+    "Life",
+    "Travel",
+    "Moneys",
+    "Art & Design",
+    "Sports",
+    "People",
+    "Health",
+    "Education"
+  ],
+
+  "___ShowCase": "ShowCase Start",
+  "showcaseCards": [
+    "25 Songs That Tell Us Where Music Is Going",
+    "These Ancient Assassins Eat Their Own Kind",
+    "How Do You Teach People to Love Difficult Music?",
+    "International Soccer's Man of Mystery"
+  ],
+  "recommended": [
+    {
+      "category": "FOOD",
+      "title": "For Chicken-Fried Steak, Too Much Is Just Enough"
+    },
+    {
+      "category": "CARS",
+      "title": "Storm Has Car Dealers Doing Swift Business"
+    },
+    {
+      "category": "MOVIES",
+      "title": "War Is Hell? In New Military Dramas, It’s One-Dimensional"
+    },
+    {
+      "category": "NFL",
+      "title": "11 surprising stat rankings for active NFL players"
+    },
+    {
+      "category": "TECH REVIEWS",
+      "title": "The bookcases you can buy online and assemble yourself"
+    }
+  ],
+  "destinations": "Destinations",
+  "fish": "In Southeast England, White Cliffs and Fish",
+  "showCaseBtn": "Read more",
+  "showCaseHead": "The chalk cliff of Beachy Head",
+
+  "___Cards": "Navbar Start",
+
+  "replace": [
+    { "category": "Cars" },
+    {
+      "title": "The joy of replicas: A $5 million car for $50,000"
+    },
+    {
+      "description": "The 31-year-old self-taught engineer and former amateur racer spends his days building artful recreations of one of the most iconic sports cars."
+    },
+    { "author": "Jessica Miller" },
+    {
+      "comments": 342
+    }
+  ],
+
+  "popular": "Popular",
+  "popular_desc": "Invisible ink: the weird world of tattoo removal – in pictures",
+  "cat_desc": "200+ Doomed Cats Saved From Euthanization",
+  "card_1": [
+    { "title": "Is Coffee Bad for Bones?" },
+    {
+      "description": "Coffee drinkers may excrete more calcium, but it doesn’t appear to weaken bones."
+    },
+    { "date": "Oct 15" }
+  ],
+
+  "__Flower": "Flower_Texts",
+
+  "flower_title": "The Big Bloom or «How Flowering Plants Changed the World»",
+  "flower_cards": [
+    { "category": "Flights" },
+    {
+      "title": "Passengers Suffer as Crowded Field Puts Pressure on Europe’s Airlines"
+    },
+    {
+      "description": "Weaker carriers have fallen by the wayside amid fierce competition, while others have been hit by bad luck. The result: thousands of canceled flights."
+    }
+  ],
+
+  "__Footer": "Footer_Texts",
+
+  "footer_title": "Subscribe now and get 20% off",
+  "news_categories": ["News", "Nation", "World", "Politics", "Solar Eclipse"],
+  "contact": ["Contact Us", "Work With Us", "Advertise", "Your Ad Choice"],
+  "footer_desc": "Universal’s business concept is to offer fashion and quality at the best price in a sustainable way. Universal has since it was founded in 2015 grown into one of the world's leading fashion companies. "
+}
