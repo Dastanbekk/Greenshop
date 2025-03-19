@@ -1,15 +1,22 @@
-import { Button, Input, Typography } from "antd";
+import { Button, Form, Input, Typography } from "antd";
 import {
   EyeInvisibleOutlined,
   EyeTwoTone,
   GoogleOutlined,
   FacebookOutlined,
+  LoadingOutlined,
 } from "@ant-design/icons";
-import { useState } from "react";
+import { FieldType } from "../../../../@types";
+import { useLoginMutate } from "../../../../hooks/useQuery/useQueryAction";
 
 const { Text } = Typography;
 const Login = () => {
-  const [password, setPassword] = useState("");
+  const { mutate, isPending } = useLoginMutate();
+  const login = (e: FieldType) => {
+    console.log(e);
+
+    mutate(e);
+  };
   return (
     <div>
       <div className="!flex !flex-col !items-center !w-96 !p-6 !bg-white !rounded-lg ">
@@ -17,33 +24,46 @@ const Login = () => {
           Enter your username and password to login.
         </Text>
 
-        <Input
-          className="!w-full !mb-3 !border-gray-300 !py-2 !rounded-md"
-          placeholder="almamun_uxui@outlook.com"
-        />
-
-        <Input.Password
-          className="!w-full !mb-3 !border-gray-300 !py-2 !rounded-md"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          iconRender={(visible) =>
-            visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />
-          }
-        />
-
-        <div className="!w-full !text-right !mb-6">
-          <Text className="!text-green-500 !cursor-pointer !hover:underline">
-            Forgot Password?
-          </Text>
-        </div>
-
-        <Button
-          type="primary"
-          className="!w-full !bg-green-600 !py-5 !border-green-600 !hover:!bg-green-500 !text-white !mb-4"
+        <Form
+          onFinish={login}
+          initialValues={{ remember: true }}
+          autoComplete="off"
+          className="!flex !flex-col !items-center !w-full"
         >
-          Login
-        </Button>
+          <Form.Item<FieldType>
+            name="email"
+            rules={[{ required: true, message: "Please enter your email" }]}
+            className="!w-full !mb-3 !border-gray-300 !py-2 !rounded-md"
+          >
+            <Input placeholder="dastandev@gmail.com" />
+          </Form.Item>
+          <Form.Item<FieldType>
+            name="password"
+            rules={[{ required: true, message: "Please enter your password" }]}
+            className="!w-full !mb-3 !border-gray-300 !py-2 !rounded-md"
+          >
+            <Input.Password
+              placeholder="Password"
+              iconRender={(visible) =>
+                visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />
+              }
+            />
+          </Form.Item>
+
+          <div className="!w-full !text-right !mb-6">
+            <Text className="!text-green-500 !cursor-pointer !hover:underline">
+              Forgot Password?
+            </Text>
+          </div>
+          <Button
+          disabled={isPending}
+            htmlType="submit"
+            type="primary"
+            className="!w-full !bg-green-600 !py-5 !border-green-600 !hover:!bg-green-500 !text-white !mb-4"
+          >
+            {isPending ? <LoadingOutlined /> : "Login"}
+          </Button>
+        </Form>
 
         <div className="!w-full !flex !items-center !mb-4">
           <div className="!flex-1 !border-b !border-gray-300"></div>

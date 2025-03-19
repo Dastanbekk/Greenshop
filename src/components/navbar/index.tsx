@@ -7,18 +7,21 @@ import menuIcon from "../../assets/svg/menu-icon.svg";
 import { Badge, Button, Drawer, Input } from "antd";
 import { SearchOutlined } from "@ant-design/icons";
 import { useState } from "react";
+import { setModalAuthorizationVisibility } from "../../redux/modal-slice";
+import { useReduxDispatch } from "../../hooks/useRedux";
 
 const Navbar = () => {
   const { pathname } = useLocation();
   const [open, setOpen] = useState(false);
-
+  const user = JSON.parse(localStorage.getItem("user") as string);
   const showDrawer = () => {
     setOpen(true);
   };
-
   const onClose = () => {
     setOpen(false);
   };
+
+  const dispatch = useReduxDispatch();
   return (
     <div className="pt-6  p-4 border-b-2 border-[#A2D0AB]">
       <div className="containerr">
@@ -65,8 +68,19 @@ const Navbar = () => {
                 <img src={cartIcon} alt="" />
               </Badge>
             </Button>
-            <Button type="primary" className="!bg-[#46A358]">
-              <img src={loginIcon} alt="" /> Login
+            <Button
+              onClick={() => dispatch(setModalAuthorizationVisibility())}
+              type="primary"
+              className="!bg-[#46A358]"
+            >
+              {user ? (
+                user.name
+              ) : (
+                <div className="flex gap-2 py-2">
+                  <img src={loginIcon} alt="" />
+                  Login
+                </div>
+              )}
             </Button>
           </div>
         </div>
