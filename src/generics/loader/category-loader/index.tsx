@@ -1,5 +1,4 @@
 import { Card, Divider, Skeleton } from 'antd'
-import React from 'react'
 
 const CategoryLoader = () => {
   return (
