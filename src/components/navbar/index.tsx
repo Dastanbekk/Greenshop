@@ -27,7 +27,7 @@ const Navbar = () => {
 
   const dispatch = useReduxDispatch();
   return (
-    <div className="pt-6  p-4 border-b-2 border-[#A2D0AB]">
+    <div className="pt-6 sticky top-0 z-10 bg-white  p-4 border-b-2 border-[#A2D0AB]">
       <div className="containerr">
         <div className="hidden sm:flex justify-between">
           <div>

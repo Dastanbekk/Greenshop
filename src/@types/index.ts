@@ -56,3 +56,42 @@ export interface ReklamaProducts {
   title: string;
   desc: string;
 }
+
+export interface HeroCarouselType {
+  id: number;
+  title: string;
+  subTitle: string;
+  description: string;
+  buttonText: string;
+  big_img_url: string;
+  small_img_url: string;
+}
+export interface PostMockItemType {
+  id: number;
+  title: string;
+  subTitle: string;
+  description: string;
+  img: string;
+}
+export interface InfoMockItemType {
+  id: number;
+  title: string;
+  description: string;
+  img: string;
+}
+export interface FooterLinksType {
+  id: number;
+  title: string;
+  link1: string;
+  link2?: string;
+  link3?: string;
+  link4?: string;
+  link5?: string;
+}
+export interface AdviceMockItemType {
+  id: number;
+  title: string;
+  description: string;
+  img: string;
+  border: boolean;
+}

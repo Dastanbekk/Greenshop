@@ -4,6 +4,7 @@ import Sidebar from "../home-sections/sidebar";
 import Products from "../home-sections/products/products";
 import PaginationProduct from "../home-sections/products/pagination-product";
 import Reklama_Products from "../reklama-products";
+import BlogPost from "../blog-posts";
 
 const HomeChildren = () => {
   return (
@@ -24,7 +25,8 @@ const HomeChildren = () => {
         </div>
       </div>
       <Reklama_Products />
-      <div className="sm:hidden">
+      <BlogPost />
+      <div className="hidden">
         <AppBar />
       </div>
     </div>
