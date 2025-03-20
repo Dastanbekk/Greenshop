@@ -1,109 +1,89 @@
-import { Link } from "react-router-dom";
 import UseQueryHandler from "../../../hooks/useQuery";
-import { Card, Dropdown, Space } from "antd";
-import { Skeleton } from "antd";
-import { DownOutlined } from "@ant-design/icons";
-
-const items: MenuProps["items"] = [
-  {
-    label: (
-      <a
-        target="_blank"
-        rel="noopener noreferrer"
-        href="https://www.antgroup.com"
-      >
-        1st menu item
-      </a>
-    ),
-    key: "0",
-  },
-  {
-    label: (
-      <a
-        target="_blank"
-        rel="noopener noreferrer"
-        href="https://www.aliyun.com"
-      >
-        2nd menu item
-      </a>
-    ),
-    key: "1",
-  },
-];
+import { Card, Empty } from "antd";
+import CardsSkeleton from "../../../generics/loader";
+import ProductsTitle from "./products-title";
+import { CardProductsType } from "../../../@types";
+import {
+  HeartOutlined,
+  SearchOutlined,
+  ShoppingOutlined,
+} from "@ant-design/icons";
+import { useSearchParamsHandler } from "../../../hooks/useSearchParans";
 
 const Products = () => {
+  const { getParam } = useSearchParamsHandler();
+  const category = getParam("category") || "house-plants";
+  const range_min = getParam("range_min") || 0;
+  const range_max = getParam("range_max") || 1500;
+  const sort = getParam("sort") || "default-sorting";
+  const type = getParam("type") || "all-plants";
   const { data, isPending, isError } = UseQueryHandler({
-    url: "flower/category/house-plants",
-    pathname: "products",
+    url: `flower/category/${category}`,
+    pathname: `flower-category-${category}range_min-${range_min}range_max-${range_max}-type-${type}-sort-${sort}`,
+    params: {
+      range_min,
+      range_max,
+      sort,
+      type,
+    },
   });
-  console.log(data);
 
+  const styleIcons: string =
+    "bg-[#f5f5f5] w-[35px] h-[35px] flex rounded-lg justify-center items-center cursor-pointer text-[20px]";
+  if (!data?.length && !isPending && !isError) {
+    return (
+      <div>
+        <ProductsTitle />
+        <div className="mt-5">
+          <Empty />
+        </div>
+      </div>
+    );
+  }
   return (
     <div>
       <div className="flex items-center justify-between">
-        <div className="flex items-center gap-5">
-          <Link to={"#"}>All Plants</Link>
-          <Link to={"#"}>All Plants</Link>
-          <Link to={"#"}>All Plants</Link>
-        </div>
-        <div className="flex items-center gap-2">
-          <span>Short by:</span>
-          <span className="cursor-pointer">
-            <Dropdown menu={{ items }} trigger={["click"]}>
-              <a onClick={(e) => e.preventDefault()}>
-                <Space>
-                  Default sorting
-                  <DownOutlined />
-                </Space>
-              </a>
-            </Dropdown>
-          </span>
-        </div>
+        <ProductsTitle />
       </div>
-      <div className="grid grid-cols-3 mt-5 gap-5">
-        {isPending || isError
-          ? Array(6)
-              .fill(0)
-              .map(
-                (
-                  _,
-                  index // Skeletonlar uchun
-                ) => (
-                  <Card
-                    key={index}
-                    className="!w-64 !rounded-xl !shadow-md border border-gray-200"
-                  >
-                    <Skeleton.Image className="!w-full !h-40 rounded-t-xl " />
-                    <div className="!py-4 w-full text-center ">
-                      <Skeleton.Input active className="!mb-2 !w-full " />
-                      <Skeleton.Input active className=" !w-full" />
-                    </div>
-                  </Card>
-                )
-              )
-          : data?.map((value) => (
-              <Card
-                key={value?.id}
-                className="items-center flex flex-col rounded-xl shadow-md border border-gray-200"
-                cover={
-                  <img
-                    alt={value?.title}
-                    src={value?.main_image}
-                    className="rounded-t-xl max-w-[250px] max-h-[250px] items-center flex p-4"
-                  />
-                }
-              >
-                <div className="text-center">
-                  <h3 className="text-gray-800 text-lg">{value?.category}</h3>
-                  <p className="text-green-600 font-bold text-lg">
-                    ${value?.price.toFixed(2)}
-                  </p>
+      {isPending || isError ? (
+        <CardsSkeleton />
+      ) : (
+        <div className="grid sm:grid-cols-2 md:grid-cols-3 mt-5 gap-5">
+          {data?.map((value: CardProductsType) => (
+            <Card
+              key={value?._id}
+              className="group !rounded-none hover:!cursor-pointer !border-t-transparent !border-t-2  hover:!border-t-[#46A358] !bg-[#FBFBFB]"
+            >
+              <img
+                alt={value?.title}
+                src={value?.main_image}
+                className="object-cover max-h-[250px]  !w-full !h-full items-center flex "
+              />
+              <div className="!hidden   group-hover:!flex !justify-center w-full !items-center !absolute !bottom-25 !gap-5">
+                <div className={`${styleIcons} hover:!text-[#46A358]`}>
+                  <ShoppingOutlined className="!text-[22px] hover:!text-[#46A358]" />
                 </div>
-              </Card>
-            ))}
-      </div>
+                <div className={`${styleIcons} hover:!text-[#46A358]`}>
+                  <HeartOutlined className="!text-[22px]" />
+                </div>
+                <div className={`${styleIcons} hover:!text-[#46A358]`}>
+                  <SearchOutlined className="!text-[22px]" />
+                </div>
+              </div>
+              <h3 className="text-gray-800 text-lg mt-2 font-bold">
+                {value?.title}
+              </h3>
+              <div className="flex gap-2">
+                <h3 className="text-green-600 font-bold mt-2 text-lg">
+                  ${value?.discount_price}
+                </h3>
+                <del>{value.price}</del>
+              </div>
+            </Card>
+          ))}
+        </div>
+      )}
     </div>
   );
 };
-
 export default Products;

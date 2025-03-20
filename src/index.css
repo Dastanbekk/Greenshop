@@ -23,3 +23,20 @@ body {
   background-color: #46a358 !important; /* Yashil rang */
   opacity: 1;
 }
+
+.custom-pagination .ant-pagination-item {
+  border-color: #46a358 !important; /* Yashil border */
+}
+
+.custom-pagination .ant-pagination-item a {
+  color: #46a358 !important; /* Yashil matn */
+}
+
+.custom-pagination .ant-pagination-item-active {
+  background-color: #46a358 !important; /* Aktiv sahifa foni yashil */
+  border-color: #46a358 !important;
+}
+
+.custom-pagination .ant-pagination-item-active a {
+  color: white !important; /* Aktiv sahifa matni oq */
+}

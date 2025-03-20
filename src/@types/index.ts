@@ -22,3 +22,37 @@ export interface QueryType<T> {
   isPending: boolean;
   data?: T;
 }
+
+export interface TitleCategoryType {
+  id: number;
+  title: string;
+  label: string;
+}
+
+export interface CardProductsType {
+  category: string;
+  comments: string[];
+  created_at: string;
+  created_by: string;
+  description: string;
+  detailed_images: string[];
+  discount: boolean;
+  discount_price: string;
+  main_image: string;
+  price: number;
+  rate: number;
+  short_description: string;
+  sold_times: number;
+  tags: [];
+  title: string;
+  views: number;
+  __v: number;
+  _id: string;
+}
+
+export interface ReklamaProducts {
+  id: number;
+  image: string;
+  title: string;
+  desc: string;
+}

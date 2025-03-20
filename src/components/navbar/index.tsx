@@ -1,4 +1,4 @@
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 import logo from "../../assets/svg/logo.svg";
 import cartIcon from "../../assets/svg/cart-icon.svg";
@@ -9,17 +9,21 @@ import { SearchOutlined } from "@ant-design/icons";
 import { useState } from "react";
 import { setModalAuthorizationVisibility } from "../../redux/modal-slice";
 import { useReduxDispatch } from "../../hooks/useRedux";
+import { cookieInfo } from "../../generics/cookies";
 
 const Navbar = () => {
+  const { isAuthorization, getCookie } = cookieInfo();
   const { pathname } = useLocation();
   const [open, setOpen] = useState(false);
-  const user = JSON.parse(localStorage.getItem("user") as string);
+  const user = getCookie("user");
   const showDrawer = () => {
     setOpen(true);
   };
   const onClose = () => {
     setOpen(false);
   };
+
+  const navigate = useNavigate();
 
   const dispatch = useReduxDispatch();
   return (
@@ -69,11 +73,15 @@ const Navbar = () => {
               </Badge>
             </Button>
             <Button
-              onClick={() => dispatch(setModalAuthorizationVisibility())}
+              onClick={() =>
+                isAuthorization
+                  ? navigate("/profile")
+                  : dispatch(setModalAuthorizationVisibility())
+              }
               type="primary"
               className="!bg-[#46A358]"
             >
-              {user ? (
+              {isAuthorization ? (
                 user.name
               ) : (
                 <div className="flex gap-2 py-2">
