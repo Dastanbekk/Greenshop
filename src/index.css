@@ -14,29 +14,47 @@ body {
   padding: 0 15px;
 }
 
+/* Swiper styles */
 .swiper-pagination-bullet {
-  background-color: gray !important; /* Default rang */
+  background-color: gray !important;
   opacity: 0.5;
 }
 
 .swiper-pagination-bullet-active {
-  background-color: #46a358 !important; /* Yashil rang */
+  background-color: #46a358 !important;
   opacity: 1;
 }
 
 .custom-pagination .ant-pagination-item {
-  border-color: #46a358 !important; /* Yashil border */
+  border-color: #46a358 !important;
 }
 
 .custom-pagination .ant-pagination-item a {
-  color: #46a358 !important; /* Yashil matn */
+  color: #46a358 !important;
 }
 
 .custom-pagination .ant-pagination-item-active {
-  background-color: #46a358 !important; /* Aktiv sahifa foni yashil */
+  background-color: #46a358 !important;
   border-color: #46a358 !important;
 }
 
 .custom-pagination .ant-pagination-item-active a {
-  color: white !important; /* Aktiv sahifa matni oq */
+  color: white !important;
+}
+
+/* Tabs style */
+.custom-tabs .ant-tabs-tab {
+  color: black !important;
+}
+
+.custom-tabs .ant-tabs-tab.ant-tabs-tab-active {
+  color: #46a358 !important;
+}
+
+.custom-tabs .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
+  color: #46a358 !important;
+}
+
+.custom-tabs .ant-tabs-ink-bar {
+  background-color: #46a358 !important;
 }

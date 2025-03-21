@@ -1,12 +1,15 @@
 import { MessageOutlined, PhoneOutlined } from "@ant-design/icons";
 import logo from "../../../assets/svg/logo.svg";
+import { Link } from "react-router-dom";
 
 const FooterMain = () => {
   return (
     <div className="containerr">
       <div className="bg-[#EDF6EF] p-4 grid grid-cols-1 items-center md:grid-cols-3 lg:grid-cols-4 sm:grid-cols-2 gap-3">
         <div>
-          <img src={logo} alt="" />
+          <Link to={"/"}>
+            <img src={logo} alt="" />
+          </Link>
         </div>
         <div className="flex  gap-2 items-center">
           <p className="max-w-[200px]">

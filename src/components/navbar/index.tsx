@@ -31,7 +31,9 @@ const Navbar = () => {
       <div className="containerr">
         <div className="hidden sm:flex justify-between">
           <div>
-            <img src={logo} alt="site-log" />
+            <Link to={"/"}>
+              <img src={logo} alt="site-log" />
+            </Link>
           </div>
           <div>
             <ul className="flex items-center gap-12">
@@ -41,7 +43,7 @@ const Navbar = () => {
                     pathname == "/" &&
                     "text-[#46a358] border-b-3 border-[#46a358]"
                   }`}
-                  to={"#"}
+                  to={"/"}
                 >
                   Home
                 </Link>

@@ -9,8 +9,10 @@ import {
   ShoppingOutlined,
 } from "@ant-design/icons";
 import { useSearchParamsHandler } from "../../../hooks/useSearchParans";
+import { useNavigate } from "react-router-dom";
 
 const Products = () => {
+  const navigate = useNavigate();
   const { getParam } = useSearchParamsHandler();
   const category = getParam("category") || "house-plants";
   const range_min = getParam("range_min") || 0;
@@ -67,7 +69,12 @@ const Products = () => {
                   <HeartOutlined className="!text-[22px]" />
                 </div>
                 <div className={`${styleIcons} hover:!text-[#46A358]`}>
-                  <SearchOutlined className="!text-[22px]" />
+                  <SearchOutlined
+                    onClick={() =>
+                      navigate(`/shop/${value.category}/${value._id}`)
+                    }
+                    className="!text-[22px]"
+                  />
                 </div>
               </div>
               <h3 className="text-gray-800 text-lg mt-2 font-bold">

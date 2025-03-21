@@ -3,7 +3,7 @@ import AppBar from "../app-bar";
 import Sidebar from "../home-sections/sidebar";
 import Products from "../home-sections/products/products";
 import PaginationProduct from "../home-sections/products/pagination-product";
-import Reklama_Products from "../reklama-products";
+import Reklama_Products from "../home-sections/reklama-products";
 import BlogPost from "../blog-posts";
 
 const HomeChildren = () => {

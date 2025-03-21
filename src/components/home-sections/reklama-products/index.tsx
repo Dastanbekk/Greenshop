@@ -1,6 +1,6 @@
 import { Button } from "antd";
-import { InfoMockItemType } from "../../@types";
-import { info_item } from "../../utils";
+import { InfoMockItemType } from "../../../@types";
+import { info_item } from "../../../utils";
 
 const Reklama_Products = () => {
   return (
