@@ -10,6 +10,7 @@ import {
 } from "@ant-design/icons";
 import { useSearchParamsHandler } from "../../../hooks/useSearchParans";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 const Products = () => {
   const navigate = useNavigate();
@@ -30,6 +31,16 @@ const Products = () => {
     },
   });
 
+  const [clickedItems, setClickedItems] = useState<{ [key: string]: boolean }>(
+    {}
+  );
+
+  const ImgClick = (id: string) => {
+    setClickedItems((prev) => ({
+      ...prev,
+      [id]: !prev[id],
+    }));
+  };
   const styleIcons: string =
     "bg-[#f5f5f5] w-[35px] h-[35px] flex rounded-lg justify-center items-center cursor-pointer text-[20px]";
   if (!data?.length && !isPending && !isError) {
@@ -57,11 +68,16 @@ const Products = () => {
               className="group !rounded-none hover:!cursor-pointer !border-t-transparent !border-t-2  hover:!border-t-[#46A358] !bg-[#FBFBFB]"
             >
               <img
+                onClick={() => ImgClick(value?._id)}
                 alt={value?.title}
                 src={value?.main_image}
                 className="object-cover max-h-[250px]  !w-full !h-full items-center flex "
               />
-              <div className="!hidden   group-hover:!flex !justify-center w-full !items-center !absolute !bottom-25 !gap-5">
+              <div
+                className={`group-hover:flex justify-center w-full items-center absolute bottom-25 gap-5 ${
+                  clickedItems[value._id] ? "flex" : "hidden"
+                }`}
+              >
                 <div className={`${styleIcons} hover:!text-[#46A358]`}>
                   <ShoppingOutlined className="!text-[22px] hover:!text-[#46A358]" />
                 </div>
