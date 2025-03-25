@@ -100,3 +100,44 @@ export interface CartTypeData extends CardProductsType {
   counter: number;
   userPrice: number;
 }
+
+export interface PathProfileType {
+  id: number;
+  title: string;
+  path: string;
+  Component: React.FC;
+  Icon: React.ForwardRefExoticComponent;
+}
+
+export interface MakeOrderType {
+  name: string;
+  surname: string;
+  country: string;
+  street: string;
+  state: string;
+  email: string;
+  zip: string;
+  appartment: string;
+  town: string;
+  phone_number: string;
+  comment: string;
+  payment_method: string;
+}
+
+export interface OrderType {
+  billing_address: BillingAdres;
+  created_at: string;
+  created_by: string;
+  extra_shop_info: {
+    total: number;
+    method: string;
+  };
+  shop_list: CartType[];
+  _id: string;
+}
+
+export interface UserBodyTitleType {
+  id: string;
+  title: string;
+  Component: React.FC;
+}

@@ -10,7 +10,7 @@ const Card: FC<CartTypeData> = ({
   userPrice,
 }) => {
   return (
-    <div className="sm:p-4">
+    <div className="sm:p-1">
       <AnimatePresence>
         <motion.tr
           initial={{ opacity: 0, y: 10 }}

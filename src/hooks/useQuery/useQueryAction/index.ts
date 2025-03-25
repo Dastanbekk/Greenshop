@@ -4,6 +4,7 @@ import { useReduxDispatch } from "../../useRedux";
 import { setModalAuthorizationVisibility } from "../../../redux/modal-slice";
 import { notificationApi } from "../../../generics/notification";
 import { cookieInfo } from "../../../generics/cookies";
+import { getCoupon } from "../../../redux/coupon-slice";
 
 export const useLoginMutate = () => {
   const axios = useAxios();
@@ -22,6 +23,39 @@ export const useLoginMutate = () => {
     },
     onError: () => {
       notify("loginError");
+    },
+  });
+};
+
+export const useGetCoupon = () => {
+  const axios = useAxios();
+  const notify = notificationApi();
+  const dispatch = useReduxDispatch();
+
+  return useMutation({
+    mutationFn: (coupon_code: string) =>
+      axios({
+        url: "features/coupon",
+        params: { coupon_code },
+      }),
+    onSuccess: (data) => {
+      dispatch(getCoupon(Number(data.data.discount_for)));
+      notify("coupon");
+    },
+    onError: () => {
+      notify("404_coupon");
+    },
+  });
+};
+
+export const useMakeOrderList = () => {
+  const axios = useAxios();
+
+  return useMutation({
+    mutationFn: (data: object) =>
+      axios({ url: "order/make-order", method: "POST", body: data }),
+    onSuccess: (data) => {
+      console.log(data);
     },
   });
 };

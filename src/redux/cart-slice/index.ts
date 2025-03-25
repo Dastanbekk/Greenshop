@@ -66,9 +66,15 @@ const cartSlice = createSlice({
       state.data = state.data.filter((item) => item._id !== payload);
       setStore("data", state.data);
     },
+    order(state) {
+      localStorage.removeItem("data");
+      state.data = [];
+    },
   },
 });
 
-export const { addData, increaseQuantity, decreaseQuantity, removeProduct } =
+export const { addData, increaseQuantity, decreaseQuantity, removeProduct, order
+    
+ } =
   cartSlice.actions;
 export default cartSlice.reducer;

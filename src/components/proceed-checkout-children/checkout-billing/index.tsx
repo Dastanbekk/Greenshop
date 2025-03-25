@@ -1,12 +1,57 @@
 import { Form, Input, Radio } from "antd";
+import { cookieInfo } from "../../../generics/cookies";
+import {
+  setModalAuthorizationVisibility,
+  setOrderModalVisibility,
+} from "../../../redux/modal-slice";
+import { useReduxDispatch, useReduxSelector } from "../../../hooks/useRedux";
+import { MakeOrderType } from "../../../@types";
+import { useMakeOrderList } from "../../../hooks/useQuery/useQueryAction";
+import { LoadingOutlined } from "@ant-design/icons";
 
 const ProceedCheckoutBilling = () => {
+  const { isAuthorization, getCookie } = cookieInfo();
+  const user = getCookie("user");
+  const dispatch = useReduxDispatch();
   const radio_style: string =
     "!border-ant-radio-wrapper !ant-radio-wrapper-checked ant-radio-wrapper-in-from-item !border !border-[#46A358] w-full !h-[40px] !flex !items-center !pl-[10px] rounded-lg !css-k7429zer";
+  const { data } = useReduxSelector((state) => state.cartSlice);
+  const { discount } = useReduxSelector((state) => state.couponSlice);
+  const totalPrice = data.reduce((acc, val) => (acc += val.userPrice), 16);
+  let total = discount
+    ? totalPrice - (totalPrice * discount) / 100
+    : totalPrice;
+  const { mutate, isPending } = useMakeOrderList();
+  const order = (e: MakeOrderType) => {
+    let makeOrder = {
+      shop_list: data,
+      billing_address: e,
+      extra_shop_info: { method: e.payment_method, total },
+    };
+    mutate(makeOrder);
+  };
 
   return (
     <section>
-      <Form layout="vertical">
+      <Form
+        onFinish={order}
+        layout="vertical"
+        fields={[
+          { name: "name", value: user?.name },
+          { name: "surname", value: user?.surname },
+          { name: "country", value: user?.billing_address?.country },
+          { name: "street", value: user?.billing_address?.street_address },
+          { name: "state", value: user?.billing_address?.state },
+          { name: "email", value: user?.email },
+          { name: "zip", value: user?.billing_address?.zip },
+          {
+            name: "appartment",
+            value: user?.billing_address?.additional_street_address,
+          },
+          { name: "town", value: user?.billing_address?.town },
+          { name: "phone_number", value: user?.phone_number },
+        ]}
+      >
         <div className="grid sm:grid-cols-2 gap-5">
           <div>
             <div>
@@ -107,14 +152,24 @@ const ProceedCheckoutBilling = () => {
           </div>
         </div>
         <div>
-          <Form.Item
-            name="comment"
-            label="Comment"
-            rules={[{ required: true }]}
-          >
-            <Input.TextArea className="!resize-none" placeholder="Enter your comment" rows={10}></Input.TextArea>
-            <button className="w-full text-center py-1 text-[18px] rounded-md bg-[#46A358] text-white  mt-3 cursor-pointer">
-              Place order
+          <Form.Item name="comments" label="Comment">
+            <Input.TextArea
+              className="!resize-none"
+              placeholder="Enter your comment"
+              rows={10}
+            ></Input.TextArea>
+            <button
+              onClick={() => {
+                if (!isAuthorization) {
+                  dispatch(setModalAuthorizationVisibility());
+                  return;
+                } else {
+                  dispatch(setOrderModalVisibility());
+                }
+              }}
+              className="w-full text-center py-1 active:scale-95 transition text-[18px] rounded-md bg-[#46A358] text-white  mt-3 cursor-pointer"
+            >
+              {isPending ? <LoadingOutlined /> : "Place order"}
             </button>
           </Form.Item>
         </div>
