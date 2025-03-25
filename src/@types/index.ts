@@ -95,3 +95,8 @@ export interface AdviceMockItemType {
   img: string;
   border: boolean;
 }
+
+export interface CartTypeData extends CardProductsType {
+  counter: number;
+  userPrice: number;
+}

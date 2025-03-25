@@ -11,6 +11,8 @@ import {
 import { useSearchParamsHandler } from "../../../hooks/useSearchParans";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { useReduxDispatch } from "../../../hooks/useRedux";
+import { addData } from "../../../redux/cart-slice";
 
 const Products = () => {
   const navigate = useNavigate();
@@ -30,7 +32,7 @@ const Products = () => {
       type,
     },
   });
-
+  const dispatch = useReduxDispatch();
   const [clickedItems, setClickedItems] = useState<{ [key: string]: boolean }>(
     {}
   );
@@ -78,7 +80,10 @@ const Products = () => {
                   clickedItems[value._id] ? "flex" : "hidden"
                 }`}
               >
-                <div className={`${styleIcons} hover:!text-[#46A358]`}>
+                <div
+                  onClick={() => dispatch(addData(value))}
+                  className={`${styleIcons} hover:!text-[#46A358]`}
+                >
                   <ShoppingOutlined className="!text-[22px] hover:!text-[#46A358]" />
                 </div>
                 <div className={`${styleIcons} hover:!text-[#46A358]`}>

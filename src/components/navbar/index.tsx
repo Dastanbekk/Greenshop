@@ -8,7 +8,7 @@ import { Badge, Button, Drawer, Input } from "antd";
 import { SearchOutlined } from "@ant-design/icons";
 import { useState } from "react";
 import { setModalAuthorizationVisibility } from "../../redux/modal-slice";
-import { useReduxDispatch } from "../../hooks/useRedux";
+import { useReduxDispatch, useReduxSelector } from "../../hooks/useRedux";
 import { cookieInfo } from "../../generics/cookies";
 
 const Navbar = () => {
@@ -26,6 +26,8 @@ const Navbar = () => {
   const navigate = useNavigate();
 
   const dispatch = useReduxDispatch();
+  const cartItems = useReduxSelector((state) => state.cartSlice.data);
+
   return (
     <div className="pt-6 sticky top-0 z-10 bg-white  p-4 border-b-2 border-[#A2D0AB]">
       <div className="containerr">
@@ -69,8 +71,11 @@ const Navbar = () => {
           </div>
           <div className="flex items-center gap-8">
             <SearchOutlined className="!text-[#3D3D3D] !text-2xl" />
-            <Button className="!border-none">
-              <Badge count={5} size="small" color="#46A358">
+            <Button
+              onClick={() => navigate("/shopping-cart")}
+              className="!border-none"
+            >
+              <Badge count={cartItems.length} size="small" color="#46A358">
                 <img src={cartIcon} alt="" />
               </Badge>
             </Button>
