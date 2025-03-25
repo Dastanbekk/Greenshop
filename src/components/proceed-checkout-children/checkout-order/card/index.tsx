@@ -10,7 +10,7 @@ const Card: FC<CartTypeData> = ({
   userPrice,
 }) => {
   return (
-    <div className="p-4">
+    <div className="sm:p-4">
       <AnimatePresence>
         <motion.tr
           initial={{ opacity: 0, y: 10 }}
@@ -19,7 +19,7 @@ const Card: FC<CartTypeData> = ({
           transition={{ duration: 0.2 }}
           className=" bg-gray-50 !flex !items-center !justify-between  transition-all"
         >
-          <td className="px-3 py-3 flex items-center gap-2 min-w-[200px]">
+          <td className="px-3 py-3 flex items-center gap-2 lg:min-w-[200px] min-w-[150px]">
             <img
               src={main_image}
               alt={title}
@@ -27,7 +27,7 @@ const Card: FC<CartTypeData> = ({
             />
             <div>
               <p className="font-semibold text-gray-800">{title}</p>
-              <p className="text-sm text-gray-500">SKU: {_id}</p>
+              <p className="text-sm hidden text-gray-500">SKU: {_id}</p>
             </div>
           </td>
           <td className="py-3 text-gray-700 text-lg font-medium min-w-[100px]">
