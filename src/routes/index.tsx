@@ -4,6 +4,8 @@ import MainLayout from "../layouts/main-layouts";
 import ProductsDetails from "../pages/product-details";
 import Cart from "../pages/cart";
 import ProceedCheckout from "../pages/proceed-checkout";
+import Blogs from "../pages/blogs";
+import Rendering from "../components/blogs-children/rendering";
 
 export const router = createBrowserRouter([
   {
@@ -13,6 +15,14 @@ export const router = createBrowserRouter([
       {
         path: "/",
         element: <Home />,
+      },
+      {
+        path: "/blog",
+        element: <Blogs />,
+      },
+      {
+        path: "/blog/:created_by/:id",
+        element: <Rendering />,
       },
       {
         path: "/shop/:category/:id",

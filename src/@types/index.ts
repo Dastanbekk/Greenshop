@@ -141,3 +141,52 @@ export interface UserBodyTitleType {
   title: string;
   // Component: React.FC;
 }
+
+export interface BlogCardsType {
+  content: string;
+  created_at: string;
+  created_by: string;
+  reaction_length: number;
+  short_description: string;
+  title: string;
+  views: number;
+  __v: number;
+  _id: string;
+  isPending?: boolean;
+}
+
+export interface AuthUser {
+  _id: string;
+  name: string;
+  surname: string;
+  username: string;
+  email: string;
+  password: string;
+  phone_number: string;
+  profile_photo: string;
+  user_type: "developer" | "admin" | "user";
+  created_at: string;
+  created_by: string;
+  followers: string[];
+  hashtags: string[];
+  order_list: any[];
+  wishlist: { [key: string]: any }[];
+  create_account_limit: number;
+  create_plant_limit: number;
+  create_post_limit: number;
+  permission: {
+    create: boolean;
+    update: boolean;
+    delete: boolean;
+    read: boolean;
+  };
+  billing_address: {
+    country: string;
+    town: string;
+    street_address: string;
+    extra_address: string;
+    state: string;
+    [key: string]: any;
+  };
+  __v: number;
+}

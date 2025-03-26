@@ -53,20 +53,28 @@ const Navbar = () => {
               <li>
                 <Link
                   className={`cursor-pointer pb-7  ${
-                    pathname == "/blog" &&
+                    pathname == "/shopping-cart" &&
                     "text-[#46a358] border-b-2 border-[#46a358]"
                   }`}
-                  to={"#"}
+                  to={"/shopping-cart"}
                 >
                   Shop
                 </Link>
               </li>
               {/* <li>
                 <Link to={"#"}>Plant Care</Link>
-              </li>
-              <li>
-                <Link to={"#"}>Blogs</Link>
               </li> */}
+              <li>
+                <Link
+                  className={`cursor-pointer pb-7  ${
+                    pathname == "/blog"  &&
+                    "text-[#46a358] border-b-2 border-[#46a358]"
+                  }`}
+                  to={"/blog"}
+                >
+                  Blogs
+                </Link>
+              </li>
             </ul>
           </div>
           <div className="flex items-center gap-8">
@@ -157,6 +165,12 @@ const Navbar = () => {
                 </div>
               </Button>
             </Badge>
+            <Button
+              className="!border-2  !border-[#45a358] mt-3 w-full"
+              onClick={() => navigate("/blog")}
+            >
+              Blogs
+            </Button>
           </Drawer>
         </div>
       </div>
