@@ -106,7 +106,7 @@ export interface PathProfileType {
   title: string;
   path: string;
   Component: React.FC;
-  Icon: React.ForwardRefExoticComponent;
+  // Icon: React.ForwardRefExoticComponent;
 }
 
 export interface MakeOrderType {
@@ -125,7 +125,7 @@ export interface MakeOrderType {
 }
 
 export interface OrderType {
-  billing_address: BillingAdres;
+  // billing_address: BillingAdres;
   created_at: string;
   created_by: string;
   extra_shop_info: {
@@ -139,5 +139,5 @@ export interface OrderType {
 export interface UserBodyTitleType {
   id: string;
   title: string;
-  Component: React.FC;
+  // Component: React.FC;
 }

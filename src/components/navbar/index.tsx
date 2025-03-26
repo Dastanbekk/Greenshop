@@ -105,19 +105,58 @@ const Navbar = () => {
             placeholder="Find your plants"
             prefix={<SearchOutlined className="text-2xl" />}
           />
-          <Button
-            onClick={showDrawer}
-            className="!bg-[#46A358] !py-5 !rounded-xl"
-          >
-            <img src={menuIcon} alt="" />
-          </Button>
+          <Badge count={cartItems.length > 0 ? 1 : ""}>
+            <Button
+              onClick={showDrawer}
+              className="!bg-[#46A358] !py-5 !rounded-xl"
+            >
+              <img src={menuIcon} alt="" />
+            </Button>
+          </Badge>
 
           <Drawer
-            title={<p className="!text-[#46A358]">Menu</p>}
+            title={
+              <div className="flex  justify-between items-center">
+                <p className="!text-[#46A358]">Menu</p>{" "}
+                <Button
+                  onClick={() =>
+                    isAuthorization
+                      ? navigate("/profile")
+                      : dispatch(setModalAuthorizationVisibility())
+                  }
+                  type="primary"
+                  className="!bg-[#46A358]"
+                >
+                  {isAuthorization ? (
+                    user.name
+                  ) : (
+                    <div className="flex gap-2 py-2">
+                      <img src={loginIcon} alt="" />
+                      Login
+                    </div>
+                  )}
+                </Button>
+              </div>
+            }
             onClose={onClose}
             open={open}
           >
-            <p>Setting</p>
+            <Badge
+              count={cartItems.length}
+              className="!w-full"
+              size="small"
+              color="#46A358"
+            >
+              <Button
+                onClick={() => navigate("/shopping-cart")}
+                className="!border-2  !border-[#45a358] w-full"
+              >
+                <div className="flex items-center gap-3">
+                  Shopping Cart
+                  <img src={cartIcon} alt="" />
+                </div>
+              </Button>
+            </Badge>
           </Drawer>
         </div>
       </div>
