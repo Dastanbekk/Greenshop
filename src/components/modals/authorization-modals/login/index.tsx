@@ -19,7 +19,7 @@ const Login = () => {
   };
   return (
     <div>
-      <div className="!flex !flex-col !items-center !w-96 !p-6 !bg-white !rounded-lg ">
+      <div className="!flex !flex-col !items-center  !w-96 !p-6 !bg-white !rounded-lg ">
         <Text className=" !text-[17px] text-start !mb-4">
           Enter your username and password to login.
         </Text>

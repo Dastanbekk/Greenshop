@@ -123,6 +123,8 @@ const Navbar = () => {
           </Badge>
 
           <Drawer
+            width={280}
+            placement="right"
             title={
               <div className="flex  justify-between items-center">
                 <p className="!text-[#46A358]">Menu</p>{" "}
@@ -134,7 +136,7 @@ const Navbar = () => {
                         : dispatch(setModalAuthorizationVisibility())
                     }
                     type="primary"
-                    className="!bg-[#46A358] !w-[30px] !h-[30px] !rounded-full"
+                    className={`!bg-[#46A358] ${isAuthorization?'!w-[30px] !h-[30px] !rounded-full':""}`}
                   >
                     {isAuthorization ? (
                       <p>{user.name.slice(0, 1)}</p>
