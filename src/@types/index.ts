@@ -132,7 +132,7 @@ export interface OrderType {
     total: number;
     method: string;
   };
-  shop_list: CartType[];
+  // shop_list: CartType[];
   _id: string;
 }
 

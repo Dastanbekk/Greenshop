@@ -1,5 +1,5 @@
 import UseQueryHandler from "../../../hooks/useQuery";
-import { Card, Empty } from "antd";
+import { Card, Empty, notification } from "antd";
 import CardsSkeleton from "../../../generics/loader";
 import ProductsTitle from "./products-title";
 import { CardProductsType } from "../../../@types";
@@ -43,6 +43,11 @@ const Products = () => {
       [id]: !prev[id],
     }));
   };
+
+  const addToCart = (value: object) => {
+    dispatch(addData(value));
+    notification.success({ message: "Product successful added to cart" });
+  };
   const styleIcons: string =
     "bg-[#f5f5f5] w-[35px] h-[35px] flex rounded-lg justify-center items-center cursor-pointer text-[20px]";
   if (!data?.length && !isPending && !isError) {
@@ -81,7 +86,7 @@ const Products = () => {
                 }`}
               >
                 <div
-                  onClick={() => dispatch(addData(value))}
+                  onClick={() => addToCart(value)}
                   className={`${styleIcons} hover:!text-[#46A358]`}
                 >
                   <ShoppingOutlined className="!text-[22px] hover:!text-[#46A358]" />
