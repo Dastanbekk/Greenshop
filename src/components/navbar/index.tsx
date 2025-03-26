@@ -67,7 +67,7 @@ const Navbar = () => {
               <li>
                 <Link
                   className={`cursor-pointer pb-7  ${
-                    pathname == "/blog"  &&
+                    pathname == "/blog" &&
                     "text-[#46a358] border-b-2 border-[#46a358]"
                   }`}
                   to={"/blog"}
@@ -126,24 +126,27 @@ const Navbar = () => {
             title={
               <div className="flex  justify-between items-center">
                 <p className="!text-[#46A358]">Menu</p>{" "}
-                <Button
-                  onClick={() =>
-                    isAuthorization
-                      ? navigate("/profile")
-                      : dispatch(setModalAuthorizationVisibility())
-                  }
-                  type="primary"
-                  className="!bg-[#46A358]"
-                >
-                  {isAuthorization ? (
-                    user.name
-                  ) : (
-                    <div className="flex gap-2 py-2">
-                      <img src={loginIcon} alt="" />
-                      Login
-                    </div>
-                  )}
-                </Button>
+                <div className="flex items-center gap-2">
+                  <Button
+                    onClick={() =>
+                      isAuthorization
+                        ? navigate("/profile")
+                        : dispatch(setModalAuthorizationVisibility())
+                    }
+                    type="primary"
+                    className="!bg-[#46A358] !w-[30px] !h-[30px] !rounded-full"
+                  >
+                    {isAuthorization ? (
+                      <p>{user.name.slice(0, 1)}</p>
+                    ) : (
+                      <div className="flex gap-2 py-2">
+                        <img src={loginIcon} alt="" />
+                        Login
+                      </div>
+                    )}
+                  </Button>
+                  {isAuthorization ? <p>Profile</p> : ""}
+                </div>
               </div>
             }
             onClose={onClose}
