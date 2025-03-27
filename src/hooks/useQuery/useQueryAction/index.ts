@@ -27,6 +27,27 @@ export const useLoginMutate = () => {
   });
 };
 
+export const useRegisterMutate = () => {
+  const axios = useAxios();
+  const notify = notificationApi();
+  const dispatch = useReduxDispatch();
+  const { setCookie } = cookieInfo();
+  return useMutation({
+    mutationFn: (data: object) =>
+      axios({ url: "user/sign-up", method: "POST", body: data }),
+    onSuccess: (data) => {
+      let { token, user } = data.data;
+      localStorage.setItem("token", token);
+      setCookie("user", user);
+      notify("register");
+      dispatch(setModalAuthorizationVisibility());
+    },
+    onError: (err) => {
+      notify("registerError");
+    },
+  });
+};
+
 export const useGetCoupon = () => {
   const axios = useAxios();
   const notify = notificationApi();

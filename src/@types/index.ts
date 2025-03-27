@@ -6,6 +6,12 @@ export interface FieldType {
   email?: string;
   password?: string;
 }
+export interface FieldTypeRegister {
+  name?: string;
+  surname?: string;
+  email?: string;
+  password?: string;
+}
 
 export interface CategoryTypes {
   count: number;
