@@ -1,4 +1,4 @@
-import { createBrowserRouter } from "react-router-dom";
+import { createBrowserRouter, Navigate } from "react-router-dom";
 import Home from "../pages/home";
 import MainLayout from "../layouts/main-layouts";
 import ProductsDetails from "../pages/product-details";
@@ -6,6 +6,10 @@ import Cart from "../pages/cart";
 import ProceedCheckout from "../pages/proceed-checkout";
 import Blogs from "../pages/blogs";
 import Rendering from "../components/blogs-children/rendering";
+import Profile from "../pages/profile";
+import { cookieInfo } from "../generics/cookies";
+import { path_profile } from "../utils";
+const { isAuthorization } = cookieInfo();
 
 export const router = createBrowserRouter([
   {
@@ -37,5 +41,13 @@ export const router = createBrowserRouter([
         element: <ProceedCheckout />,
       },
     ],
+  },
+  {
+    path: "/profile",
+    element: isAuthorization ? <Profile /> : <Navigate to={"/"} replace />,
+    children: path_profile.map(({ path, Components }) => ({
+      path: `${path}`,
+      element: <Components />,
+    })),
   },
 ]);

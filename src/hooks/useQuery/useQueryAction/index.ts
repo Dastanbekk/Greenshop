@@ -59,3 +59,22 @@ export const useMakeOrderList = () => {
     },
   });
 };
+const updateCookieUser = (updater: any) => {
+  const { setCookie, getCookie } = cookieInfo();
+  const user = getCookie("user");
+  return setCookie("user", { ...user, ...updater });
+};
+
+export const useEditDetails = () => {
+  const axios = useAxios();
+
+  return useMutation({
+    mutationFn: (data: object) => {
+      updateCookieUser(data);
+      return axios({ url: "user/account-details", method: "POST", body: data });
+    },
+    onSuccess: (data) => {
+      console.log(data);
+    },
+  });
+};

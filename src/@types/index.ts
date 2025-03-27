@@ -116,12 +116,15 @@ export interface MakeOrderType {
   street: string;
   state: string;
   email: string;
+  password?: any;
   zip: string;
   appartment: string;
   town: string;
   phone_number: string;
   comment: string;
   payment_method: string;
+  new_password?: string;
+  confirm_password?: string;
 }
 
 export interface OrderType {
