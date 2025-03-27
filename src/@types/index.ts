@@ -179,6 +179,11 @@ export interface AuthUser {
   followers: string[];
   hashtags: string[];
   order_list: any[];
+  country: string;
+  town: string;
+  street: string;
+  extra_address: string;
+  state: string;
   wishlist: { [key: string]: any }[];
   create_account_limit: number;
   create_plant_limit: number;
