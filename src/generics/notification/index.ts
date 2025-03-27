@@ -21,9 +21,6 @@ export const notificationApi = () => {
         return notification.success({ message: "Coupon successfully" });
       case "registerSuccess":
         return notification.success({ message: "Register successfully" });
-      case "registerError":
-        return notification.error({ message: "Register error" });
-
       case "loginError":
         return notification.error({ message: "Login or password wrong" });
       case "registerError":

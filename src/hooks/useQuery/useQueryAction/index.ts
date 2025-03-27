@@ -44,6 +44,7 @@ export const useRegisterMutate = () => {
     },
     onError: (err) => {
       notify("registerError");
+      console.log(err);
     },
   });
 };
