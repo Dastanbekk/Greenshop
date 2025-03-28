@@ -1,5 +1,4 @@
-import { Form, Input, Upload, Button } from "antd";
-import { UploadOutlined } from "@ant-design/icons";
+import { Form, Input,  Button } from "antd";
 // import { EyeInvisibleOutlined, EyeTwoTone } from "@ant-design/icons";
 import { AuthUser } from "../../../../@types";
 import { cookieInfo } from "../../../../generics/cookies";

@@ -5,7 +5,6 @@ import { useState } from "react";
 import {
   HeartOutlined,
   SearchOutlined,
-  ShoppingOutlined,
 } from "@ant-design/icons";
 import { useNavigate } from "react-router-dom";
 import CardsSkeleton from "../../../../generics/loader";
