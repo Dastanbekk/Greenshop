@@ -6,7 +6,7 @@ import {
   DashboardOutlined,
 } from "@ant-design/icons";
 
-import type { TitleCategoryType } from "../@types";
+import type { ProfileTabType, TitleCategoryType } from "../@types";
 export const title_category: TitleCategoryType[] = [
   {
     id: 1,
@@ -245,5 +245,33 @@ export const path_profile: PathProfileType[] = [
     Icon: DashboardOutlined,
     title: "Track Order",
     Components: TrackOrder,
+  },
+];
+
+export const profile_tab_items: ProfileTabType[] = [
+  {
+    key: "1",
+    label: "About",
+    // Children: About,
+  },
+  {
+    key: "2",
+    label: "Products",
+    // Children: ProductsItem,
+  },
+  {
+    key: "3",
+    label: "Posts",
+    // Children: Posts,
+  },
+  {
+    key: "4",
+    label: "Likees",
+    // Children: Likes,
+  },
+  {
+    key: "5",
+    label: "Followers",
+    // Children: Followers,
   },
 ];

@@ -1,0 +1,61 @@
+import { useParams } from "react-router-dom";
+import bgImg from "../../../assets/img/mountain-lake-header.webp";
+import UseQueryHandler from "../../../hooks/useQuery";
+import { Avatar, Button } from "antd";
+import {
+  MessageOutlined,
+  PlusCircleOutlined,
+  SendOutlined,
+} from "@ant-design/icons";
+
+const UserPageHero = () => {
+  const param = useParams();
+  console.log(param.id);
+
+  const { data } = UseQueryHandler({
+    url: `user/by_id/${param}`,
+    pathname: "user-info",
+  });
+  console.log(data);
+
+  return (
+    <div className="py-5">
+      <div className="containerr ">
+        <div>
+          <img src={bgImg} className=" w-full min-h-[200px] object-cover" alt="" />
+          <div className="flex justify-between flex-wrap  gap-3 px-5 sm:mt-[-50px] items-end">
+            <div className="flex gap-2 items-center sm:items-end">
+              <Avatar
+                className="!min-w-[40px] !min-h-[40px]  !max-w-[100px] !w-full !h-full !max-h-[100px]"
+                src={data?.profile_photo}
+                alt=""
+              />
+              <div>
+                <h3 className="font-bold text-[18px]">
+                  {data?.name} {data?.surname}
+                </h3>
+                <p>Followers {data?.followers.length}</p>
+              </div>
+            </div>
+            <div className="flex items-center gap-3">
+              <Button className="!bg-[#45a358] text-white" type="primary">
+                <MessageOutlined />
+                <p className="hidden sm:block">Start Chat</p>
+              </Button>
+              <Button className="!bg-[#45a358] text-white" type="primary">
+                <SendOutlined />
+                <p className="hidden sm:block">Send Invitation</p>
+              </Button>
+              <Button className="!bg-[#45a358] text-white" type="primary">
+                <PlusCircleOutlined />
+                <p className="hidden sm:block">Follow</p>
+              </Button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default UserPageHero;

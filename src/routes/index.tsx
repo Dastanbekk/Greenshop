@@ -9,6 +9,7 @@ import Rendering from "../components/blogs-children/rendering";
 import Profile from "../pages/profile";
 import { cookieInfo } from "../generics/cookies";
 import { path_profile } from "../utils";
+import UserPage from "../pages/user-page";
 const { isAuthorization } = cookieInfo();
 
 export const router = createBrowserRouter([
@@ -23,6 +24,10 @@ export const router = createBrowserRouter([
       {
         path: "/blog",
         element: <Blogs />,
+      },
+      {
+        path: "/user-page/:id",
+        element: <UserPage />,
       },
       {
         path: "/blog/:created_by/:id",

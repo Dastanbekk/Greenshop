@@ -1,3 +1,5 @@
+import { FC } from "react";
+
 export interface ComponentType {
   children: React.ReactNode;
 }
@@ -215,4 +217,10 @@ export interface OrderType {
   };
   shop_list: CartTypeData[];
   _id: string;
+}
+
+export interface ProfileTabType {
+  key: string;
+  label: string;
+  Children?: FC;
 }

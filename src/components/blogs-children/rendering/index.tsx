@@ -1,4 +1,4 @@
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import UseQueryHandler from "../../../hooks/useQuery";
 import { AuthUser, BlogCardsType, QueryType } from "../../../@types";
 import { Avatar, Breadcrumb, Button, notification } from "antd";
@@ -50,7 +50,7 @@ const Rendering = () => {
 
   const userLoading = userPending || userError;
   const dataLoading = isPending || isError;
-
+  const navigate = useNavigate();
   return (
     <div className="containerr">
       <Breadcrumb
@@ -74,6 +74,7 @@ const Rendering = () => {
           <div className="flex justify-between items-center">
             <div className="flex gap-2 items-center">
               <Avatar
+                onClick={() => navigate(`/user-page/${user?._id}`)}
                 className="!w-[50px] !h-[50px]"
                 src={user?.profile_photo}
                 alt=""
