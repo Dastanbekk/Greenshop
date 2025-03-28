@@ -60,8 +60,8 @@ import advice2 from "../assets/img/advice2.png";
 import AccountDetails from "../components/profile-children/profile-pages/account-details";
 import MyProducts from "../components/profile-children/profile-pages/my-products";
 import Address from "../components/profile-children/profile-pages/address";
-import Wishlist from "../components/profile-children/profile-pages";
 import TrackOrder from "../components/profile-children/profile-pages/track-order";
+import Wishlist from "../components/profile-children/profile-pages/wishlist";
 export const hero_carousel: HeroCarouselType[] = [
   {
     id: 1,

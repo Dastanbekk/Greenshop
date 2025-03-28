@@ -7,8 +7,11 @@ export const cookieInfo = () => {
   const setCookie = (key: string, data: string) => {
     return Cookies.set(key, JSON.stringify(data));
   };
+  const removeCookie = (name: string) => {
+    Cookies.remove(name, { path: "/" });
+  };
 
   const isAuthorization = getCookie("user") ? true : false;
 
-  return { getCookie, setCookie, isAuthorization };
+  return { getCookie, setCookie, removeCookie, isAuthorization };
 };

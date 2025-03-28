@@ -204,3 +204,15 @@ export interface AuthUser {
   };
   __v: number;
 }
+
+export interface OrderType {
+  billing_address: any;
+  created_at: string;
+  created_by: string;
+  extra_shop_info: {
+    total: number;
+    method: string;
+  };
+  shop_list: CartTypeData[];
+  _id: string;
+}
