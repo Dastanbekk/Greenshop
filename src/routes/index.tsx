@@ -8,8 +8,9 @@ import Blogs from "../pages/blogs";
 import Rendering from "../components/blogs-children/rendering";
 import Profile from "../pages/profile";
 import { cookieInfo } from "../generics/cookies";
-import { path_profile } from "../utils";
+import { path_profile, profile_tab_items } from "../utils";
 import UserPage from "../pages/user-page";
+import UserDetails from "../components/user-page-children/user-details";
 const { isAuthorization } = cookieInfo();
 
 export const router = createBrowserRouter([
@@ -28,6 +29,16 @@ export const router = createBrowserRouter([
       {
         path: "/user-page/:id",
         element: <UserPage />,
+        children: [
+          {
+            path: "",
+            element: <UserDetails />,
+            children: profile_tab_items.map(({ key, Components }) => ({
+              path: key, // 🔹 Key bo‘yicha path
+              element: <Components />, // 🔹 Components o‘rniga `<Component />`
+            })),
+          },
+        ],
       },
       {
         path: "/blog/:created_by/:id",

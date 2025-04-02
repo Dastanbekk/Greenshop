@@ -9,12 +9,13 @@ const AccountDetails = () => {
   const { getCookie, setCookie } = cookieInfo();
   const user: AuthUser = getCookie("user");
   const { mutate } = useEditDetails();
-  
+
   const updateDetails = (e: any) => {
     mutate({
       ...e,
       _id: user._id,
       profile_photo: e.profile_photo.file?.response?.image_url,
+      phone_number: e.phone_number,
     });
 
     setCookie("user", {
@@ -22,8 +23,10 @@ const AccountDetails = () => {
       ...e,
       _id: user._id,
       profile_photo: e.profile_photo.file?.response?.image_url,
+      phone_number: e.phone_number,
     });
   };
+
   return (
     <div className="p-4">
       <Form

@@ -1,4 +1,4 @@
-import { Form, Input,  Button } from "antd";
+import { Form, Input, Button } from "antd";
 // import { EyeInvisibleOutlined, EyeTwoTone } from "@ant-design/icons";
 import { AuthUser } from "../../../../@types";
 import { cookieInfo } from "../../../../generics/cookies";
@@ -9,12 +9,12 @@ const Address = () => {
   const user: AuthUser = getCookie("user");
   const { mutate } = useEditDetails();
   console.log(user);
-  
+
   const updateDetails = (e: any) => {
-    mutate({
-      ...e,
-      _id: user._id,
-    });
+    let makeOrder = {
+      billing_address: e,
+    };
+    mutate(makeOrder);
 
     setCookie("user", {
       ...user.billing_address,
@@ -30,11 +30,16 @@ const Address = () => {
         fields={[
           { name: "name", value: user?.name },
           { name: "surname", value: user?.surname },
+          { name: "country", value: user?.billing_address?.country },
+          { name: "street", value: user?.billing_address?.street },
+          { name: "state", value: user?.billing_address?.state },
           { name: "email", value: user?.email },
-          { name: "country", value: user?.country },
-          { name: "town", value: user?.town },
-          { name: "street", value: user?.street },
-          { name: "state", value: user?.state },
+          { name: "zip", value: user?.billing_address?.zip },
+          {
+            name: "appartment",
+            value: user?.billing_address?.additional_street_address,
+          },
+          { name: "town", value: user?.billing_address?.town },
           { name: "phone_number", value: user?.phone_number },
         ]}
       >

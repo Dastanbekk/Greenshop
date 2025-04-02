@@ -40,7 +40,7 @@ const ProceedCheckoutBilling = () => {
           { name: "name", value: user?.name },
           { name: "surname", value: user?.surname },
           { name: "country", value: user?.billing_address?.country },
-          { name: "street", value: user?.billing_address?.street_address },
+          { name: "street", value: user?.billing_address?.street },
           { name: "state", value: user?.billing_address?.state },
           { name: "email", value: user?.email },
           { name: "zip", value: user?.billing_address?.zip },

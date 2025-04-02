@@ -7,6 +7,7 @@ import {
   PlusCircleOutlined,
   SendOutlined,
 } from "@ant-design/icons";
+import UserDetails from "../user-details";
 
 const UserPageHero = () => {
   const param = useParams();
@@ -16,7 +17,6 @@ const UserPageHero = () => {
     url: `user/by_id/${user_id}`,
     pathname: "user-info",
   });
-  console.log(data);
 
   return (
     <div className="py-5">
@@ -30,11 +30,11 @@ const UserPageHero = () => {
           {isPending || isError ? (
             <div className="flex items-end justify-between mt-5">
               <div className="flex gap-3 items-end">
-              <Skeleton.Avatar />
-              <div>
-                <Skeleton.Button />
-                <Skeleton.Button />
-              </div>
+                <Skeleton.Avatar />
+                <div>
+                  <Skeleton.Button />
+                  <Skeleton.Button />
+                </div>
               </div>
               <div className="flex gap-3">
                 <Skeleton.Button />
@@ -73,6 +73,9 @@ const UserPageHero = () => {
               </div>
             </div>
           )}
+        </div>
+        <div className="mt-5 ">
+          <UserDetails userData={data} />
         </div>
       </div>
     </div>

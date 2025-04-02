@@ -1,7 +1,7 @@
 import { Link, useNavigate, useParams } from "react-router-dom";
 import UseQueryHandler from "../../../hooks/useQuery";
 import { AuthUser, BlogCardsType, QueryType } from "../../../@types";
-import { Avatar, Breadcrumb, Button, notification } from "antd";
+import { Avatar, Breadcrumb, Button, notification, Tooltip } from "antd";
 import {
   CommentOutlined,
   EyeOutlined,
@@ -73,12 +73,15 @@ const Rendering = () => {
         ) : (
           <div className="flex justify-between items-center">
             <div className="flex gap-2 items-center">
-              <Avatar
-                onClick={() => navigate(`/user-page/${user?._id}`)}
-                className="!w-[50px] !h-[50px]"
-                src={user?.profile_photo}
-                alt=""
-              />
+              <Tooltip title={`${user?.name} ${user?.surname}`}>
+                <Avatar
+                  onClick={() => navigate(`/user-page/${user?._id}`)}
+                  className="!w-[50px] !h-[50px] !cursor-pointer"
+                  src={user?.profile_photo}
+                  alt=""
+                />
+              </Tooltip>
+
               <div>
                 <h3 className="font-semibold">
                   {user?.name} {user?.surname}

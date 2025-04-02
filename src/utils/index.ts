@@ -62,6 +62,11 @@ import MyProducts from "../components/profile-children/profile-pages/my-products
 import Address from "../components/profile-children/profile-pages/address";
 import TrackOrder from "../components/profile-children/profile-pages/track-order";
 import Wishlist from "../components/profile-children/profile-pages/wishlist";
+import About from "../components/user-page-children/user-details/about";
+import Products from "../components/user-page-children/user-details/products";
+import Posts from "../components/user-page-children/user-details/posts";
+import Likees from "../components/user-page-children/user-details/likees";
+import Followers from "../components/user-page-children/user-details/followers";
 export const hero_carousel: HeroCarouselType[] = [
   {
     id: 1,
@@ -252,26 +257,26 @@ export const profile_tab_items: ProfileTabType[] = [
   {
     key: "1",
     label: "About",
-    // Children: About,
+    Components: About,
   },
   {
     key: "2",
     label: "Products",
-    // Children: ProductsItem,
+    Components: Products,
   },
   {
     key: "3",
     label: "Posts",
-    // Children: Posts,
+    Components: Posts,
   },
   {
     key: "4",
     label: "Likees",
-    // Children: Likes,
+    Components: Likees,
   },
   {
     key: "5",
     label: "Followers",
-    // Children: Followers,
+    Components: Followers,
   },
 ];

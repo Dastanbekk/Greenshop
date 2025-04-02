@@ -1,4 +1,3 @@
-import { FC } from "react";
 
 export interface ComponentType {
   children: React.ReactNode;
@@ -184,6 +183,7 @@ export interface AuthUser {
   country: string;
   town: string;
   street: string;
+  flower_id: string;
   extra_address: string;
   state: string;
   wishlist: { [key: string]: any }[];
@@ -222,5 +222,5 @@ export interface OrderType {
 export interface ProfileTabType {
   key: string;
   label: string;
-  Children?: FC;
+  Component: React.FC;
 }

@@ -100,3 +100,39 @@ export const useEditDetails = () => {
     },
   });
 };
+
+
+
+// export const useDeleteOrder = () => {
+//   const axios = useAxios();
+//   const deleteOrder = useDeleteOrderCashe();
+//   const notify = notificationApi();
+
+//   return useMutation({
+//     mutationFn: (data: { _id: string }) => {
+//       deleteOrder(data);
+//       return axios({ url: "order/delete-order", method: "DELETE", body: data });
+//     },
+//     onSuccess: () => {
+//       notify("order");
+//     },
+//   });
+// };
+
+
+
+
+// export const useIsLiked = () => {
+//   const axios = useAxios();
+//   const notify = notificationApi();
+
+//   return useMutation({
+//     mutationFn: (data: { _id: string }) => {
+//       return axios({ url: "user/create-wishlist", method: "POST", body: data });
+//     },
+//     onSuccess: () => {
+//       notify("like");
+//     },
+//   });
+// };
+
