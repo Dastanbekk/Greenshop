@@ -31,7 +31,10 @@ const Address = () => {
           { name: "name", value: user?.name },
           { name: "surname", value: user?.surname },
           { name: "country", value: user?.billing_address?.country },
-          { name: "street", value: user?.billing_address?.street },
+          {
+            name: "street_address",
+            value: user?.billing_address?.street_address,
+          },
           { name: "state", value: user?.billing_address?.state },
           { name: "email", value: user?.email },
           { name: "zip", value: user?.billing_address?.zip },
@@ -53,18 +56,18 @@ const Address = () => {
               label="Country / Region"
               rules={[{ required: true }]}
             >
-              <Input placeholder="Type your first street..." />
+              <Input placeholder="Type your first country..." />
             </Form.Item>
             <Form.Item
-              name="street"
+              name="street_address"
               label="Street address"
               rules={[{ required: true }]}
             >
-              <Input placeholder="Type your first country..." />
+              <Input placeholder="Type your street..." />
             </Form.Item>
 
             <Form.Item name="email" label="Email" rules={[{ required: true }]}>
-              <Input placeholder="Type your first country..." />
+              <Input placeholder="Type your first email..." />
             </Form.Item>
           </div>
           <div>
@@ -81,7 +84,7 @@ const Address = () => {
               label="Town / City"
               rules={[{ required: true }]}
             >
-              <Input placeholder="Type your Last name..." />
+              <Input placeholder="Type your city..." />
             </Form.Item>
             <Form.Item name="state" label="State" rules={[{ required: true }]}>
               <Input placeholder="Type your state..." />

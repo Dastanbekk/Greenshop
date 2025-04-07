@@ -18,11 +18,15 @@ const TrackOrder = () => {
         {isLoading || isError ? (
           // user.order_loader()
           Array.from({ length: 8 }).map((_, idx) => (
-            <Skeleton.Input key={idx} active className="!w-full !h-full !max-h-[100px]" />
+            <Skeleton.Input
+              key={idx}
+              active
+              className="!w-full !h-full !max-h-[100px]"
+            />
           ))
-        ) : data?.slice(0, 62).length ? (
+        ) : data?.slice(10).length ? (
           data
-            .slice(0, 62)
+            .slice(0, 2)
             .map((value: OrderType) => <OrderItem key={value._id} {...value} />)
         ) : (
           <Empty description={<p>No order</p>} />

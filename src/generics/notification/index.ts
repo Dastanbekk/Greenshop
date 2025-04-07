@@ -8,6 +8,7 @@ type NotifycationApiType =
   | "coupon"
   | "404_coupon"
   | "registerSuccess"
+  | "order"
   | "registerError";
 
 export const notificationApi = () => {
@@ -21,6 +22,8 @@ export const notificationApi = () => {
         return notification.success({ message: "Coupon successfully" });
       case "registerSuccess":
         return notification.success({ message: "Register successfully" });
+      case "order":
+        return notification.success({ message: "Order successfully deleted" });
       case "loginError":
         return notification.error({ message: "Login or password wrong" });
       case "registerError":

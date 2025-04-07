@@ -1,4 +1,3 @@
-
 export interface ComponentType {
   children: React.ReactNode;
 }
@@ -133,16 +132,24 @@ export interface MakeOrderType {
   new_password?: string;
   confirm_password?: string;
 }
+interface BillingAddress {
+  country?: string;
+  town?: string;
+  street_address?: string;
+  additional_street_address?: string;
+  state?: string;
+  zip?: string;
+}
 
 export interface OrderType {
-  // billing_address: BillingAdres;
+  billing_address: BillingAddress;
   created_at: string;
   created_by: string;
   extra_shop_info: {
     total: number;
     method: string;
   };
-  // shop_list: CartType[];
+  shop_list: CartTypeData[];
   _id: string;
 }
 
@@ -196,19 +203,12 @@ export interface AuthUser {
     delete: boolean;
     read: boolean;
   };
-  billing_address: {
-    country: string;
-    town: string;
-    street_address: string;
-    extra_address: string;
-    state: string;
-    [key: string]: any;
-  };
+  billing_address?: BillingAddress;
   __v: number;
 }
 
 export interface OrderType {
-  billing_address: any;
+  billing_address: BillingAddress;
   created_at: string;
   created_by: string;
   extra_shop_info: {
@@ -222,5 +222,34 @@ export interface OrderType {
 export interface ProfileTabType {
   key: string;
   label: string;
-  Component: React.FC;
+  Components: React.FC;
+}
+
+export interface CartTypeData extends CardProductsType {
+  counter: number;
+  userPrice: number;
+}
+
+export interface UserDataType {
+  billing_address: string[];
+  create_account_limit: number;
+  create_plant_limit: number;
+  create_post_limit: number;
+  created_at: string;
+  created_by: string;
+  email: string;
+  followers: [string];
+  hashtags: string[];
+  name: string;
+  order_list: string[];
+  password: string;
+  permission: string[];
+  phone_number: string;
+  profile_photo: string;
+  surname: string;
+  user_type: string;
+  username: string;
+  wishlist: string[];
+  __v: number;
+  _id: string;
 }

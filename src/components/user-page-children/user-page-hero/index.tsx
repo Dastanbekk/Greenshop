@@ -75,7 +75,7 @@ const UserPageHero = () => {
           )}
         </div>
         <div className="mt-5 ">
-          <UserDetails userData={data} />
+          <UserDetails   />
         </div>
       </div>
     </div>

@@ -11,19 +11,20 @@ const AccountDetails = () => {
   const { mutate } = useEditDetails();
 
   const updateDetails = (e: any) => {
+    console.log(e);
+    // e.profile_photo.file?.response?.image_url
+
     mutate({
       ...e,
       _id: user._id,
-      profile_photo: e.profile_photo.file?.response?.image_url,
-      phone_number: e.phone_number,
+      profile_photo:  e.profile_photo.file?.response?.image_url?.url,
     });
 
     setCookie("user", {
       ...user,
       ...e,
       _id: user._id,
-      profile_photo: e.profile_photo.file?.response?.image_url,
-      phone_number: e.phone_number,
+      profile_photo:  e.profile_photo?.file?.response?.image_url?.url,
     });
   };
 
@@ -33,12 +34,12 @@ const AccountDetails = () => {
         onFinish={updateDetails}
         layout="vertical"
         fields={[
-          { name: "name", value: user?.name },
-          { name: "surname", value: user?.surname },
-          { name: "email", value: user?.email },
-          { name: "username", value: user?.username },
+          { name: ["name"], value: user?.name },
+          { name: ["surname"], value: user?.surname },
+          { name: ["email"], value: user?.email },
+          { name: ["username"], value: user?.username },
           // { name: "password", value: user?.password },
-          { name: "phone_number", value: user?.phone_number },
+          { name: ["phone_number"], value: user?.phone_number },
         ]}
       >
         <div className="grid sm:grid-cols-2 gap-5">
@@ -122,7 +123,7 @@ const AccountDetails = () => {
               <Upload
                 name="image"
                 data={{ type: "image" }}
-                action="https://backend-n14.onrender.com/api/upload?access_token=64bebc1e2c6d3f056a8c85b7"
+                action="https://beckend-n14-soqt.vercel.app/api/upload?access_token=64bebc1e2c6d3f056a8c85b7"
                 listType="picture"
                 headers={{
                   Authorization: `Bearer ${localStorage.getItem("token")}`,

@@ -33,9 +33,9 @@ export const router = createBrowserRouter([
           {
             path: "",
             element: <UserDetails />,
-            children: profile_tab_items.map(({ key, Components }) => ({
-              path: key, // 🔹 Key bo‘yicha path
-              element: <Components />, // 🔹 Components o‘rniga `<Component />`
+            children: profile_tab_items.map(({ key, Components }: any) => ({
+              path: key,
+              element: <Components />,
             })),
           },
         ],

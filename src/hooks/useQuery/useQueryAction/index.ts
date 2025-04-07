@@ -1,10 +1,11 @@
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useAxios } from "../../useAxios";
 import { useReduxDispatch } from "../../useRedux";
 import { setModalAuthorizationVisibility } from "../../../redux/modal-slice";
 import { notificationApi } from "../../../generics/notification";
 import { cookieInfo } from "../../../generics/cookies";
 import { getCoupon } from "../../../redux/coupon-slice";
+import { OrderType } from "../../../@types";
 
 export const useLoginMutate = () => {
   const axios = useAxios();
@@ -101,26 +102,41 @@ export const useEditDetails = () => {
   });
 };
 
+const useDeleteOrderCache = () => {
+  const queryClient = useQueryClient();
+  return ({ _id }: { _id: string }) => {
+    queryClient.setQueryData(
+      ["order-list"],
+      (oldData: OrderType[] | undefined) => {
+        if (oldData) {
+          return oldData?.filter((value) => value._id !== _id) || [];
+        } else {
+          return [];
+        }
+      }
+    );
+  };
+};
 
+export const useDeleteOrder = () => {
+  const axios = useAxios();
+  const deleteOrder = useDeleteOrderCache();
+  const notify = notificationApi();
 
-// export const useDeleteOrder = () => {
-//   const axios = useAxios();
-//   const deleteOrder = useDeleteOrderCashe();
-//   const notify = notificationApi();
-
-//   return useMutation({
-//     mutationFn: (data: { _id: string }) => {
-//       deleteOrder(data);
-//       return axios({ url: "order/delete-order", method: "DELETE", body: data });
-//     },
-//     onSuccess: () => {
-//       notify("order");
-//     },
-//   });
-// };
-
-
-
+  return useMutation({
+    mutationFn: (data: { _id: string }) => {
+      deleteOrder(data);
+      return axios({
+        url: "order/delete-order",
+        method: "DELETE",
+        body: data, 
+      });
+    },
+    onSuccess: () => {
+      notify("order");
+    },
+  });
+};
 
 // export const useIsLiked = () => {
 //   const axios = useAxios();
@@ -135,4 +151,3 @@ export const useEditDetails = () => {
 //     },
 //   });
 // };
-

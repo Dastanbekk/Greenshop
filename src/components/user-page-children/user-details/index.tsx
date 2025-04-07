@@ -1,12 +1,12 @@
 import { useState } from "react";
 import { profile_tab_items } from "../../../utils";
 
-const UserDetails = ({userData}) => {
-  const [activeTab, setActiveTab] = useState("1"); // 🔹 Default "About"
+const UserDetails= () => {
+  const [activeTab, setActiveTab] = useState("1");
 
   return (
     <div>
-      <div className="flex gap-4 border-b pb-2">
+      <div className="flex flex-wrap gap-4 border-b pb-2">
         {profile_tab_items?.map(({ key, label }) => (
           <button
             key={key}
@@ -21,8 +21,10 @@ const UserDetails = ({userData}) => {
       </div>
 
       <div className="mt-4">
-        {profile_tab_items?.map(({ key, Components }) =>
-          activeTab === key ? <Components key={key} userData={userData} /> : null
+        {profile_tab_items?.map(({ key, Components }: any) =>
+          activeTab === key ? (
+            <Components key={key}  />
+          ) : null
         )}
       </div>
     </div>

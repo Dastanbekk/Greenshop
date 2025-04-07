@@ -20,7 +20,7 @@ const Rendering = () => {
     isPending: userPending,
     isError: userError,
   }: QueryType<AuthUser> = UseQueryHandler({
-    url: `/user/by_id/${created_by}`,
+    url: `user/by_id/${created_by}`,
     pathname: `user-${created_by}`,
   });
   const { data, isPending, isError }: QueryType<BlogCardsType> =

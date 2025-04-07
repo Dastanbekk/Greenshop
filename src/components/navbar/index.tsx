@@ -139,7 +139,7 @@ const Navbar = () => {
                     className={`!bg-[#46A358] ${isAuthorization?'!w-[30px] !h-[30px] !rounded-full':""}`}
                   >
                     {isAuthorization ? (
-                      <p>{user.name.slice(0, 1)}</p>
+                      <p>{user?.name?.slice(0, 1)}</p>
                     ) : (
                       <div className="flex gap-2 py-2">
                         <img src={loginIcon} alt="" />
